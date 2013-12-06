@@ -8,6 +8,7 @@ node[:deploy].each do |app_name, deploy|
     curl -s https://getcomposer.org/installer | php
     php composer.phar install
     mkdir protected/runtime
+    chown www-data -R protected/runtime
     EOH
   end
 
