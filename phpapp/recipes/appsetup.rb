@@ -7,6 +7,7 @@ node[:deploy].each do |app_name, deploy|
     code <<-EOH
     curl -s https://getcomposer.org/installer | php
     php composer.phar install
+    mkdir protected/runtime
     EOH
   end
 
@@ -17,7 +18,7 @@ node[:deploy].each do |app_name, deploy|
 
     if platform?("ubuntu")
       owner "www-data"
-    elsif platform?("amazon")   
+    elsif platform?("amazon")
       owner "apache"
     end
 
